@@ -1,528 +1,515 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jasmeet Kaur — Data Analyst & BI Developer</title>
-    <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap)" rel="stylesheet">
-    <style>
-        /* ===== RESET & BASE ===== */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 16px; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0a0f;
-            color: #e0e0e6;
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-        a { color: inherit; text-decoration: none; }
-        img { max-width: 100%; display: block; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics Canvas | BI & Retail Analytics Portfolio</title>
 
-        /* ===== ANIMATED GRADIENT BACKGROUND ===== */
-        .bg-glow {
-            position: fixed; top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.07) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
-            z-index: -1; pointer-events: none;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        /* ===== NAV ===== */
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding: 0 2rem;
-        }
-        .nav-inner {
-            max-width: 1200px; margin: 0 auto;
-            display: flex; justify-content: space-between; align-items: center;
-            height: 64px;
-        }
-        .nav-logo {
-            font-weight: 700; font-size: 1.2rem;
-            background: linear-gradient(135deg, #818cf8, #a78bfa);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a {
-            font-size: 0.875rem; font-weight: 400; color: #9ca3af;
-            transition: color 0.3s; letter-spacing: 0.02em;
-        }
-        .nav-links a:hover { color: #fff; }
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-        /* ===== SECTIONS ===== */
-        section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
-        .section-label {
-            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
-            text-transform: uppercase; color: #818cf8; margin-bottom: 0.75rem;
-        }
-        .section-title {
-            font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem;
-            line-height: 1.3;
-        }
+    html{
+      scroll-behavior:smooth;
+    }
 
-        /* ===== HERO ===== */
-        .hero {
-            min-height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; padding-top: 64px;
-        }
-        .hero-eyebrow {
-            font-size: 0.875rem; font-weight: 500; color: #818cf8;
-            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;
-            display: inline-flex; align-items: center; gap: 0.5rem;
-        }
-        .hero-eyebrow::before {
-            content: ''; width: 2rem; height: 1px; background: #818cf8;
-        }
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800;
-            line-height: 1.1; color: #fff; margin-bottom: 1.5rem;
-            max-width: 800px;
-        }
-        .hero h1 span {
-            background: linear-gradient(135deg, #818cf8, #a78bfa, #c084fc);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero-sub {
-            font-size: 1.15rem; color: #9ca3af; max-width: 580px;
-            line-height: 1.8; margin-bottom: 2.5rem;
-        }
-        .hero-stats {
-            display: flex; gap: 3rem; flex-wrap: wrap;
-        }
-        .hero-stat-number {
-            font-size: 2rem; font-weight: 800; color: #fff;
-        }
-        .hero-stat-label {
-            font-size: 0.8rem; color: #6b7280; text-transform: uppercase;
-            letter-spacing: 0.08em; margin-top: 0.25rem;
-        }
+    body{
+      font-family:'Inter',sans-serif;
+      background:#070b14;
+      color:#e8edf7;
+      overflow-x:hidden;
+      line-height:1.7;
+    }
 
-        /* ===== ABOUT ===== */
-        .about-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-            align-items: start;
-        }
-        .about-text p { color: #9ca3af; margin-bottom: 1.25rem; font-size: 1rem; }
-        .about-text p strong { color: #e0e0e6; }
-        .about-highlights {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
-        }
-        .highlight-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px; padding: 1.5rem;
-            transition: border-color 0.3s, transform 0.3s;
-        }
-        .highlight-card:hover {
-            border-color: rgba(129, 140, 248, 0.3);
-            transform: translateY(-2px);
-        }
-        .highlight-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-        .highlight-title {
-            font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 0.25rem;
-        }
-        .highlight-desc { font-size: 0.8rem; color: #6b7280; }
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-        /* ===== SKILLS ===== */
-        .skills-container { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
-        .skill-tag {
-            background: rgba(129, 140, 248, 0.08);
-            border: 1px solid rgba(129, 140, 248, 0.2);
-            border-radius: 100px; padding: 0.5rem 1.25rem;
-            font-size: 0.85rem; font-weight: 500; color: #a5b4fc;
-            transition: all 0.3s; cursor: default;
-        }
-        .skill-tag:hover {
-            background: rgba(129, 140, 248, 0.15);
-            border-color: rgba(129, 140, 248, 0.4);
-            transform: translateY(-1px);
-        }
+    .bg{
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at top left, rgba(88,101,242,.18), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(168,85,247,.14), transparent 30%);
+      z-index:-1;
+    }
 
-        /* ===== PROJECTS ===== */
-        .projects-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 1.5rem; margin-top: 1rem;
-        }
-        .project-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 16px; padding: 2rem;
-            transition: all 0.4s; position: relative; overflow: hidden;
-        }
-        .project-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0;
-            height: 3px; background: linear-gradient(90deg, #818cf8, #a78bfa);
-            opacity: 0; transition: opacity 0.4s;
-        }
-        .project-card:hover {
-            border-color: rgba(129, 140, 248, 0.25);
-            transform: translateY(-4px);
-            background: rgba(255,255,255,0.04);
-        }
-        .project-card:hover::before { opacity: 1; }
-        .project-icon {
-            width: 48px; height: 48px; border-radius: 12px;
-            background: rgba(129, 140, 248, 0.1);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; margin-bottom: 1.25rem;
-        }
-        .project-title {
-            font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem;
-        }
-        .project-desc {
-            font-size: 0.875rem; color: #9ca3af; line-height: 1.7; margin-bottom: 1.25rem;
-        }
-        .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .project-tag {
-            font-size: 0.7rem; font-weight: 500; color: #818cf8;
-            background: rgba(129, 140, 248, 0.08);
-            padding: 0.25rem 0.6rem; border-radius: 4px;
-            text-transform: uppercase; letter-spacing: 0.05em;
-        }
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:999;
+      backdrop-filter:blur(14px);
+      background:rgba(7,11,20,.75);
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
 
-        /* ===== TESTIMONIAL ===== */
-        .testimonial-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 16px; padding: 3rem;
-            position: relative; max-width: 800px;
-        }
-        .testimonial-quote {
-            font-size: 1.5rem; color: rgba(129, 140, 248, 0.3);
-            margin-bottom: 1rem; line-height: 1;
-        }
-        .testimonial-text {
-            font-size: 1.05rem; color: #c8c8d0; line-height: 1.8;
-            font-style: italic; margin-bottom: 1.5rem;
-        }
-        .testimonial-author { font-weight: 600; color: #fff; font-size: 0.95rem; }
-        .testimonial-role { color: #6b7280; font-size: 0.85rem; margin-top: 0.15rem; }
+    .nav-inner{
+      max-width:1200px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 24px;
+    }
 
-        /* ===== CONTACT ===== */
-        .contact-content { max-width: 600px; }
-        .contact-content p { color: #9ca3af; margin-bottom: 2rem; font-size: 1.05rem; }
-        .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .contact-btn {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.85rem 1.75rem; border-radius: 10px;
-            font-size: 0.9rem; font-weight: 600;
-            transition: all 0.3s; cursor: pointer;
-        }
-        .contact-btn.primary {
-            background: linear-gradient(135deg, #818cf8, #a78bfa);
-            color: #fff;
-        }
-        .contact-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(129,140,248,0.3); }
-        .contact-btn.secondary {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: #e0e0e6;
-        }
-        .contact-btn.secondary:hover { border-color: rgba(129,140,248,0.4); transform: translateY(-2px); }
+    .logo{
+      font-weight:800;
+      font-size:1.2rem;
+      background:linear-gradient(90deg,#8ea2ff,#c084fc);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
 
-        /* ===== FOOTER ===== */
-        footer {
-            text-align: center; padding: 3rem 2rem;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            color: #4b5563; font-size: 0.8rem;
-        }
+    .nav-links{
+      display:flex;
+      gap:28px;
+      list-style:none;
+    }
 
-        /* ===== SCROLL ANIMATION ===== */
-        .fade-up {
-            opacity: 0; transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .nav-links a{
+      color:#cbd5e1;
+      font-size:.95rem;
+      transition:.3s;
+    }
 
-        /* ===== MOBILE ===== */
-        .menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+    .nav-links a:hover{
+      color:white;
+    }
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none; flex-direction: column; position: absolute;
-                top: 64px; left: 0; width: 100%;
-                background: rgba(10,10,15,0.98); padding: 1.5rem 2rem;
-                border-bottom: 1px solid rgba(255,255,255,0.06);
-                gap: 1.25rem;
-            }
-            .nav-links.open { display: flex; }
-            .menu-toggle { display: block; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero-stats { gap: 2rem; }
-            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .about-highlights { grid-template-columns: 1fr; }
-            .projects-grid { grid-template-columns: 1fr; }
-            section { padding: 4rem 1.25rem; }
-            .testimonial-card { padding: 1.75rem; }
-        }
-    </style>
+    section{
+      max-width:1200px;
+      margin:auto;
+      padding:100px 24px;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-content{
+      max-width:760px;
+    }
+
+    .eyebrow{
+      color:#9fb3ff;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:.8rem;
+      margin-bottom:18px;
+      font-weight:600;
+    }
+
+    h1{
+      font-size:clamp(3rem,7vw,5.2rem);
+      line-height:1.05;
+      margin-bottom:24px;
+      font-weight:800;
+    }
+
+    h1 span{
+      background:linear-gradient(90deg,#8ea2ff,#c084fc);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero p{
+      color:#a9b4c7;
+      font-size:1.12rem;
+      max-width:620px;
+      margin-bottom:40px;
+    }
+
+    .stats{
+      display:flex;
+      gap:50px;
+      flex-wrap:wrap;
+    }
+
+    .stat h2{
+      font-size:2rem;
+      color:white;
+    }
+
+    .stat span{
+      color:#7f8ca3;
+      font-size:.82rem;
+      letter-spacing:1px;
+      text-transform:uppercase;
+    }
+
+    .section-title{
+      font-size:2.2rem;
+      margin-bottom:18px;
+      font-weight:700;
+    }
+
+    .section-text{
+      color:#9ba7ba;
+      max-width:760px;
+      margin-bottom:50px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:24px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:18px;
+      padding:28px;
+      transition:.35s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(142,162,255,.3);
+      background:rgba(255,255,255,.045);
+    }
+
+    .card-icon{
+      font-size:2rem;
+      margin-bottom:18px;
+    }
+
+    .card h3{
+      margin-bottom:12px;
+      font-size:1.1rem;
+    }
+
+    .card p{
+      color:#9ba7ba;
+      font-size:.94rem;
+    }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .skill{
+      padding:10px 18px;
+      border-radius:999px;
+      background:rgba(142,162,255,.09);
+      border:1px solid rgba(142,162,255,.18);
+      color:#b6c2ff;
+      font-size:.88rem;
+    }
+
+    .project-image{
+      height:180px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#111827,#1f2937);
+      border:1px dashed rgba(255,255,255,.12);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#667085;
+      margin-bottom:20px;
+      text-align:center;
+      padding:20px;
+      font-size:.9rem;
+    }
+
+    .contact-box{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      padding:40px;
+      border-radius:22px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top:24px;
+    }
+
+    .btn{
+      padding:14px 22px;
+      border-radius:12px;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .btn-primary{
+      background:linear-gradient(90deg,#8ea2ff,#c084fc);
+      color:white;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,.1);
+      color:#dbe4f0;
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.04);
+    }
+
+    footer{
+      padding:40px 24px;
+      text-align:center;
+      color:#667085;
+      border-top:1px solid rgba(255,255,255,.05);
+    }
+
+    @media(max-width:768px){
+
+      .nav-links{
+        display:none;
+      }
+
+      h1{
+        font-size:3rem;
+      }
+
+      .stats{
+        gap:24px;
+      }
+
+    }
+
+  </style>
 </head>
+
 <body>
 
-<div class="bg-glow"></div>
+<div class="bg"></div>
 
-<!-- ===== NAVIGATION ===== -->
 <nav>
-    <div class="nav-inner">
-        <a href="#" class="nav-logo">JK</a>
-        <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">☰</button>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#testimonial">Testimonial</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
+  <div class="nav-inner">
+    <div class="logo">Analytics Canvas</div>
+
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
-<!-- ===== HERO ===== -->
 <section class="hero">
-    <div class="hero-eyebrow">Data Analyst & BI Developer</div>
-    <h1>Turning Retail Data Into <span>Business Decisions</span></h1>
-    <p class="hero-sub">
-        I build dashboards and analytics systems that help brands, retailers, and leadership teams see what matters — and act on it. Specializing in e-commerce analytics and the beverage alcohol industry.
+
+  <div class="hero-content">
+
+    <div class="eyebrow">
+      Retail Analytics • Business Intelligence • Dashboard Strategy
+    </div>
+
+    <h1>
+      Turning Complex Retail Data Into <span>Clear Business Decisions</span>
+    </h1>
+
+    <p>
+      BI Developer and Data Analyst with 8+ years of experience building enterprise dashboards, campaign analytics systems, retail intelligence platforms, and data storytelling solutions across large-scale e-commerce environments.
     </p>
-    <div class="hero-stats">
-        <div>
-            <div class="hero-stat-number">8+</div>
-            <div class="hero-stat-label">Years Experience</div>
-        </div>
-        <div>
-            <div class="hero-stat-number">50M+</div>
-            <div class="hero-stat-label">Records Analyzed</div>
-        </div>
-        <div>
-            <div class="hero-stat-number">6+</div>
-            <div class="hero-stat-label">Dashboard Systems</div>
-        </div>
-        <div>
-            <div class="hero-stat-number">5</div>
-            <div class="hero-stat-label">BI Tools Mastered</div>
-        </div>
+
+    <div class="stats">
+
+      <div class="stat">
+        <h2>8+</h2>
+        <span>Years Experience</span>
+      </div>
+
+      <div class="stat">
+        <h2>Enterprise</h2>
+        <span>Analytics Systems</span>
+      </div>
+
+      <div class="stat">
+        <h2>Multi-Platform</h2>
+        <span>BI Expertise</span>
+      </div>
+
+      <div class="stat">
+        <h2>Retail</h2>
+        <span>Data Intelligence</span>
+      </div>
+
     </div>
+
+  </div>
+
 </section>
 
-<!-- ===== ABOUT ===== -->
 <section id="about">
-    <div class="about-grid">
-        <div class="about-text fade-up">
-            <div class="section-label">About</div>
-            <div class="section-title">Analytics That Actually Drive Action</div>
-            <p>
-                I'm a Data Analyst based in <strong>Fort Worth, Texas</strong>, with 8+ years of experience in business intelligence, reporting, and dashboard development. For the last 5 years, I've been deep in the <strong>retail e-commerce and beverage alcohol industry</strong> through Bottlecapps, where I work with large-scale transactional datasets containing tens of millions of records.
-            </p>
-            <p>
-                My strength isn't just building dashboards — it's <strong>understanding the business question behind the data</strong> and designing solutions that teams actually use to make decisions. From campaign attribution to store lifecycle tracking, I focus on turning complex datasets into clear, story-driven insights.
-            </p>
-            <p>
-                I collaborate with cross-functional teams — marketing, operations, sales, and leadership — to deliver analytics that shape strategy, optimize operations, and uncover growth opportunities.
-            </p>
-        </div>
-        <div class="about-highlights fade-up">
-            <div class="highlight-card">
-                <div class="highlight-icon">📊</div>
-                <div class="highlight-title">Dashboard Design</div>
-                <div class="highlight-desc">End-to-end BI solutions from data modeling to stakeholder-ready visualizations</div>
-            </div>
-            <div class="highlight-card">
-                <div class="highlight-icon">🎯</div>
-                <div class="highlight-title">Campaign Analytics</div>
-                <div class="highlight-desc">Attribution, ROAS, CTR, and sales impact analysis for digital retail campaigns</div>
-            </div>
-            <div class="highlight-card">
-                <div class="highlight-icon">⚡</div>
-                <div class="highlight-title">Query Optimization</div>
-                <div class="highlight-desc">Performance tuning on large-scale datasets with millions of records</div>
-            </div>
-            <div class="highlight-card">
-                <div class="highlight-icon">🧩</div>
-                <div class="highlight-title">Data Storytelling</div>
-                <div class="highlight-desc">Translating raw numbers into narratives that drive strategic decisions</div>
-            </div>
-        </div>
+
+  <div class="section-title">
+    About
+  </div>
+
+  <div class="section-text">
+    I specialize in designing analytics systems that help businesses understand performance, customer behavior, campaign effectiveness, operational efficiency, and growth opportunities. My experience spans retail e-commerce analytics, KPI reporting, dashboard strategy, attribution modeling, and large-scale data reporting across enterprise environments.
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Dashboard Architecture</h3>
+      <p>
+        Designed executive dashboards, operational reporting systems, KPI tracking platforms, and business intelligence solutions tailored to stakeholder decision-making.
+      </p>
     </div>
+
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Large Scale Analytics</h3>
+      <p>
+        Worked extensively with high-volume transactional datasets, optimizing reporting workflows, queries, and dashboard performance across enterprise systems.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h3>Campaign Intelligence</h3>
+      <p>
+        Built attribution and campaign analytics systems tracking engagement, conversions, ROAS, clickthrough behavior, and sales performance.
+      </p>
+    </div>
+
+  </div>
+
 </section>
 
-<!-- ===== SKILLS ===== -->
-<section id="skills">
-    <div class="fade-up">
-        <div class="section-label">Toolkit</div>
-        <div class="section-title">Technologies & Skills</div>
-        <div class="skills-container">
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">SQL Server</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Apache Superset</span>
-            <span class="skill-tag">Power BI</span>
-            <span class="skill-tag">Tableau</span>
-            <span class="skill-tag">Amazon QuickSight</span>
-            <span class="skill-tag">Advanced Excel</span>
-            <span class="skill-tag">Data Modeling</span>
-            <span class="skill-tag">KPI Analytics</span>
-            <span class="skill-tag">Dashboard Design</span>
-            <span class="skill-tag">Performance Benchmarking</span>
-            <span class="skill-tag">ETL & Data Pipelines</span>
-            <span class="skill-tag">Role-Level Security</span>
-            <span class="skill-tag">Data Storytelling</span>
-            <span class="skill-tag">Statistics</span>
-            <span class="skill-tag">Query Optimization</span>
-        </div>
-    </div>
-</section>
-
-<!-- ===== PROJECTS ===== -->
 <section id="projects">
-    <div class="section-label fade-up">Portfolio</div>
-    <div class="section-title fade-up">Key Projects & Systems</div>
-    <div class="projects-grid">
 
-        <div class="project-card fade-up">
-            <div class="project-icon">📈</div>
-            <div class="project-title">Campaign Performance Dashboards</div>
-            <div class="project-desc">
-                Built end-to-end campaign analytics tracking impressions, clicks, CTR, CVR, ROAS, revenue per click, and sales attribution. Developed brand-level and retailer-level benchmarking with direct and indirect sales attribution logic for Feature Product Campaigns.
-            </div>
-            <div class="project-tags">
-                <span class="project-tag">ROAS</span>
-                <span class="project-tag">Attribution</span>
-                <span class="project-tag">Superset</span>
-                <span class="project-tag">SQL</span>
-            </div>
-        </div>
+  <div class="section-title">
+    Featured Projects
+  </div>
 
-        <div class="project-card fade-up">
-            <div class="project-icon">🏪</div>
-            <div class="project-title">Retail Store Performance Dashboards</div>
-            <div class="project-desc">
-                Developed comprehensive store performance systems tracking sales trends, order growth, customer acquisition, store maturity lifecycle, health scoring, and retention analysis. Created a 12-month new store lifecycle tracker identifying healthy, at-risk, and inactive retailers.
-            </div>
-            <div class="project-tags">
-                <span class="project-tag">Store Analytics</span>
-                <span class="project-tag">KPIs</span>
-                <span class="project-tag">Lifecycle</span>
-                <span class="project-tag">SQL</span>
-            </div>
-        </div>
+  <div class="section-text">
+    Placeholder project previews below — you can later replace these with screenshots, blurred dashboards, videos, or demos without exposing confidential business data.
+  </div>
 
-        <div class="project-card fade-up">
-            <div class="project-icon">📦</div>
-            <div class="project-title">Inventory & Distribution Dashboards</div>
-            <div class="project-desc">
-                Built inventory reporting systems with daily snapshots, state-level visibility, distribution analysis, supplier availability reporting, and fulfillment visibility. Optimized queries on large-scale inventory datasets across multiple states.
-            </div>
-            <div class="project-tags">
-                <span class="project-tag">Inventory</span>
-                <span class="project-tag">Distribution</span>
-                <span class="project-tag">Optimization</span>
-            </div>
-        </div>
+  <div class="cards">
 
-        <div class="project-card fade-up">
-            <div class="project-icon">🧹</div>
-            <div class="project-title">Bevstack & Brand Cleanup Analytics</div>
-            <div class="project-desc">
-                Led large-scale brand normalization projects involving UPC validation, product hierarchy mapping, brand standardization, Salsify integration, and case-to-consumer UPC mapping. Supported major beverage suppliers in maintaining accurate product ecosystems.
-            </div>
-            <div class="project-tags">
-                <span class="project-tag">Data Quality</span>
-                <span class="project-tag">UPC</span>
-                <span class="project-tag">Normalization</span>
-            </div>
-        </div>
+    <div class="card">
 
-        <div class="project-card fade-up">
-            <div class="project-icon">🖱️</div>
-            <div class="project-title">Clickthrough & Engagement Analytics</div>
-            <div class="project-desc">
-                Built dashboards analyzing web banner performance, login banner engagement, app interactions, and pop-up ad effectiveness. Created engagement-to-sales attribution models that helped teams understand customer behavior across digital retail channels.
-            </div>
-            <div class="project-tags">
-                <span class="project-tag">Engagement</span>
-                <span class="project-tag">Attribution</span>
-                <span class="project-tag">Digital</span>
-            </div>
-        </div>
+      <div class="project-image">
+        Dashboard Screenshot Placeholder<br>
+        (Campaign Analytics)
+      </div>
 
-        <div class="project-card fade-up">
-            <div class="project-icon">🎯</div>
-            <div class="project-title">Executive & Client Reporting</div>
-            <div class="project-desc">
-                Created customized ad hoc reports and executive-level visualizations for stakeholders, suppliers, and leadership. Translated complex datasets into simple, story-driven dashboards supporting business strategy and operational decisions.
-            </div>
-            <div class="project-tags">
-                <span class="project-tag">Executive BI</span>
-                <span class="project-tag">Storytelling</span>
-                <span class="project-tag">Ad Hoc</span>
-            </div>
-        </div>
+      <h3>Campaign Performance Intelligence</h3>
+
+      <p>
+        Built analytics systems measuring impressions, CTR, conversions, attributed sales, ROAS, and engagement behavior across digital retail campaigns.
+      </p>
 
     </div>
-</section>
 
-<!-- ===== TESTIMONIAL ===== -->
-<section id="testimonial">
-    <div class="section-label fade-up">Testimonial</div>
-    <div class="section-title fade-up">What People Say</div>
-    <div class="testimonial-card fade-up">
-        <div class="testimonial-quote">❝</div>
-        <div class="testimonial-text">
-            "I had the pleasure of working with Jasmeet for a year, and she was always a go-to expert in data management and analysis. She was always available to help, quickly solving any tech issues with efficiency and expertise. Her problem-solving skills and open communication made collaboration easy and productive. It was a pleasure working with her, and I highly recommend her!"
-        </div>
-        <div class="testimonial-author">Marie Andre Gálvez-Sobral</div>
-        <div class="testimonial-role">Professional Colleague</div>
+    <div class="card">
+
+      <div class="project-image">
+        Dashboard Screenshot Placeholder<br>
+        (Store Performance)
+      </div>
+
+      <h3>Retail Store Lifecycle Analytics</h3>
+
+      <p>
+        Developed dashboards tracking new store growth, retention, order velocity, customer activity, and operational health scoring.
+      </p>
+
     </div>
+
+    <div class="card">
+
+      <div class="project-image">
+        Video Placeholder<br>
+        (Future Demo)
+      </div>
+
+      <h3>Inventory & Distribution Reporting</h3>
+
+      <p>
+        Created inventory intelligence systems providing visibility into product availability, distribution performance, and retail supply trends.
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
 
-<!-- ===== CONTACT ===== -->
+<section id="skills">
+
+  <div class="section-title">
+    Tools & Technologies
+  </div>
+
+  <div class="skills">
+
+    <div class="skill">SQL</div>
+    <div class="skill">SQL Server</div>
+    <div class="skill">MySQL</div>
+    <div class="skill">Apache Superset</div>
+    <div class="skill">Power BI</div>
+    <div class="skill">Tableau</div>
+    <div class="skill">Amazon QuickSight</div>
+    <div class="skill">Advanced Excel</div>
+    <div class="skill">Dashboard Design</div>
+    <div class="skill">KPI Analytics</div>
+    <div class="skill">Data Storytelling</div>
+    <div class="skill">Retail Intelligence</div>
+    <div class="skill">Performance Benchmarking</div>
+    <div class="skill">Query Optimization</div>
+
+  </div>
+
+</section>
+
 <section id="contact">
-    <div class="contact-content fade-up">
-        <div class="section-label">Get In Touch</div>
-        <div class="section-title">Let's Work Together</div>
-        <p>
-            Whether you need help building analytics infrastructure, designing dashboards, or making sense of complex datasets —
-            I'm always open to connecting.
-        </p>
-        <div class="contact-links">
-            <a href="[linkedin.com](https://www.linkedin.com/in/jasmeet15/)" target="_blank" class="contact-btn primary">
-                ✦ LinkedIn Profile
-            </a>
-            <a href="mailto:jasmeet.kaur.analyst@gmail.com" class="contact-btn secondary">
-                ✉ Email Me
-            </a>
-        </div>
+
+  <div class="contact-box">
+
+    <div class="section-title">
+      Let’s Connect
     </div>
+
+    <div class="section-text">
+      Open to connecting with professionals, recruiters, analytics leaders, and teams looking for expertise in dashboard systems, retail analytics, and business intelligence strategy.
+    </div>
+
+    <div class="buttons">
+
+      <a href="https://www.linkedin.com/" target="_blank" class="btn btn-primary">
+        LinkedIn
+      </a>
+
+      <a href="#" class="btn btn-secondary">
+        Portfolio Expanding Soon
+      </a>
+
+    </div>
+
+  </div>
+
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer>
-    <p>© 2026 Jasmeet Kaur. Built with data-driven precision.</p>
+  © 2026 Analytics Canvas • Designed for modern business intelligence storytelling
 </footer>
-
-<!-- ===== SCROLL ANIMATION SCRIPT ===== -->
-<script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Close mobile menu on link click
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.remove('open');
-        });
-    });
-</script>
 
 </body>
 </html>
